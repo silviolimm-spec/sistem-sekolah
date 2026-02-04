@@ -1,0 +1,25 @@
+<?php
+namespace App\Controllers;
+
+class StudentController
+{
+
+    public function index(): void
+    {
+        echo '<h1>Daftar Siswa</h1>';
+            echo '<p>Menampilkan Daftar Siswa</p>';
+    }
+
+    public function create(): void
+    {
+        echo '<h1>Tambah Siswa</h1>';
+        echo '<p>Menampilkan Form Tambah Siswa</p>';
+    }
+
+    public function show(string $id):void
+    {
+        echo'<h1> Detail Siswa </h1>';
+        echo"<p> Menampilkan detail siswa ID: {$id} </p>";
+    }
+}
+?>

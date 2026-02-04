@@ -1,9 +1,13 @@
 <?php
-require_once './app/core/router.php';
+require_once './app/core/Router.php';
 
-use App\core\Router;
+use App\Core\Router;
 
-$router = new router();
+$router = new Router();
+// Register Routes
+$router -> add('GET' , '/students' , 'StudentController' , 'index');
+$router ->add('GET' , '/students/create' , 'StudentController' , 'create');
+$router ->add('GET' , '/students/id' , 'StudentController' , 'create');
+
 $router->run();
-
 ?>
