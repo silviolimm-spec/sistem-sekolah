@@ -1,22 +1,44 @@
 <?php
 namespace App\Controllers;
+require_once '../app/core/Controller.php';
+require_once '../app/models/Student.php';
 
-class StudentController
+use App\Core\Controller;
+use App\Models\Student;
+
+class StudentController extends Controller
 {
 
-    public function index(): void
+    public function index()
     {
-        require_once '../app/views/students/index.php';
+        $studentModel = new Student();
+        $students = $studentModel->getStudents();
+
+        $this->view('students.index', [
+            'students' => $students
+        ]);
     }
 
-    public function create(): void
+    public function create()
     {
-        require_once '../app/views/students/create.php';
+        $this->view('students.create');
     }
 
-    public function show(string $id):void
+    public function show(string $id)
     {
-        require_once '../app/views/students/show.php';
+        $id = intval($id);
+
+        $studentModel = new Student();
+        $student = $studentModel->getStudent($id);
+
+        $this->view('students.show', [
+            'student' => $student
+        ]);
     }
+
+    public function edit(string $id)
+    {
+        $this->view('students.edit');
+    }
+
 }
-?>
